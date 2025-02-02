@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery System</title>
+    <script src="server.js"></script>
+    <script src="node.js"></script>
+    <script src="email.js"></script>
+    <style>
+
+        
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            text-decoration-color: #ddd;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        } body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(foodo1.jpg);
+            background-size: cover; /* Ensures the image covers the whole background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+        
+        img {
+            float:right;
+        }
+        /* Menu Section Styles */
+        .menu-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .menu-item {
+            display: flexbox;
+            background-color:blue;
+            border: 1px solid blue;
+            padding: 10px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            margin: 0;
+        }
+
+        /* Cart Section Styles */
+        .cart-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item button {
+            background-color: #ff5733;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .cart-item button:hover {
+            background-color: #e64c1a;
+        }
+
+        /* Cart Total Styles */
+        .cart-total {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Rest of your existing styles for menu and cart sections */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Food Delivery System</h1>
+        <nav>
+            <ul>
+                
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#signup">Signup</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#about">About</a></li> <!-- Add About link -->
+                <li><a href="#contact">Contact Us</a></li> <!-- Add Contact Us link -->
+                <li><a href="#order">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        
+    </section>
+
+    <section id="signup">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Signup</button>
+        </form>
+    </section>
+    <!-- About Us Section -->
+<section id="about">
+    <h2 align="center">About Us</h2>
+    <p>Welcome to FoodDeliver, your go-to destination for delicious food delivered right to your doorstep.</p>
+
+    <p>At FoodDeliver, we're passionate about connecting you with a wide variety of cuisines from your favorite local restaurants. Whether you're craving classic comfort food, exotic international dishes, or healthy options, we have something for everyone.</p>
+
+    <p>Our mission is to make ordering food as easy and convenient as possible. With just a few clicks, you can explore menus, place orders, and have your favorite meals delivered to your home or office.</p>
+
+    <p>Why choose FoodDeliver?</p>
+    <ul>
+        <li>Extensive Menu Selection: We partner with a diverse range of restaurants to offer you an extensive menu selection.</li>
+        <li>Fast and Reliable Delivery: Our dedicated delivery team ensures that your food arrives fresh and on time.</li>
+        <li>Secure Online Payments: Enjoy hassle-free and secure online payment options.</li>
+        <li>24/7 Customer Support: Our friendly customer support team is available around the clock to assist you.</li>
+    </ul>
+
+    <p>Thank you for choosing FoodDeliver. We look forward to serving you delicious meals whenever and wherever you are.</p>
+</section>
+
+
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, please don't hesitate to contact our customer support team.</p>
+        <p>Email: khannaapoorv011@gmail.com</p>
+        <p>Phone: +91 9140683474</p>
+    </section>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Food Menu</title>
+        <style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3106f;
+            background-image: url(foodo1.jpg);
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        button{
+              text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+        h2{
+            text-align:center;
+            background-color: cyan;
+            display:flex;
+            color:yellow;
+            justify-content: center;
+            
+        }
+         section{
+            text-align:center;
+         }
+        /* Menu Section Styles */
+        .menu-section {
+            display: inline;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .menuucat {
+            display: flexbox;
+        }
+
+        .menu-item {
+            background-color:#453d3d;
+            border: 0.5px solid #c55757;
+            padding: 10px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            text-decoration-color: #ddd;
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            display: inline-block; 
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+          li{
+            text-align: center;
+          }
+        .menu-item h3 {
+            margin: 0;
+        }
+        .northIndianMenu {
+            display: inline-flex;
+
+            flex-direction: row-reverse;
+        }
+
+        /* Cart Section Styles */
+        .cart-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            display:block;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item button {
+            background-color: #ff5733;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .cart-item button:hover {
+            background-color: #e64c1a;
+        }
+
+        /* Cart Total Styles */
+        .cart-total {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        /* Style the Order Form */
+#orderForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+#orderForm label {
+    display: block;
+    margin-top: 10px;
+}
+
+#orderForm input,
+#orderForm textarea {
+    display:block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#orderForm button {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#orderForm button:hover {
+    background-color: #86391f;
+}
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Food Menu</h1>
+        </header>
+    
+        <!-- North Indian Section -->
+        <section id="menuucat">
+            <h2>North Indian</h2>
+            <div id="northIndianMenu"></div>
+        </section>
+        
+    
+        <!-- South Indian Section -->
+        <section>
+            <h2>South Indian</h2>
+            <div id="southIndianMenu"></div>
+        </section>
+    
+        <!-- Continental Section -->
+        <section>
+            <h2>Continental</h2>
+            <div id="continentalMenu"></div>
+        </section>
+    
+        <!-- Italian Section -->
+        <section>
+            <h2>Italian</h2>
+            <div id="italianMenu"></div>
+        </section>
+    
+        <!-- Chinese Section -->
+        <section>
+            <h2>Chinese</h2>
+            <div id="chineseMenu"></div>
+        </section>
+    
+        <!-- Cart Section -->
+        <section>
+            <h2>Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: ₹<span id="cart-total">0.00</span></p>
+        </section>
+    
+        <script>
+            // Sample data for menu items with lower prices
+            window.alert("Hello folks welcome");
+            alert ("What would you like to order");
+            const menuData = {
+                northIndian: [
+                    { name: "Dal Makhani", price: 349,  },
+                    { name: "Kadhai Paneer", price: 399 },
+                    { name: "Chana Masala", price: 299 },
+                    { name: "Rajma Masala", price: 349 },
+                    { name: "Palak Paneer", price: 389 },
+                    { name: "Bhindi Masala", price: 299 },
+                    { name: "Baingan Bharta", price: 349 }
+                ],
+                southIndian: [
+                    { name: "Dosa", price: 199 },
+                    { name: "Sambhar", price: 99 },
+                    { name: "Idli", price: 149 },
+                    { name: "Vada", price: 129 },
+                    { name: "Rava Uttapam", price: 249 },
+                    { name: "Rice", price: 79 },
+                    { name: "Rasam", price: 99 },
+                    { name: "Payasam", price: 149 }
+                ],
+                continental: [
+                    { name: "Crispy Calamari Rings", price: 299 },
+                    { name: "Paneer Steak", price: 349 },
+                    { name: "East-West Spring Roll", price: 249 },
+                    { name: "Smoked Kidney Bean Salad", price: 199 },
+                    { name: "Scotch Eggs", price: 279 },
+                    { name: "Spinach and Chicken Macaroni", price: 329 },
+                    { name: "White Wine Chicken with Garlic", price: 379 }
+                ],
+                italian: [
+                    { name: "Panzenella", price: 229 },
+                    { name: "Bruschetta", price: 199 },
+                    { name: "Focaccia Bread", price: 149 },
+                    { name: "Pasta Carbonara", price: 299 },
+                    { name: "Margherita Pizza", price: 249 },
+                    { name: "Alfredo Pasta", price: 329 },
+                    { name: "Mushroom Risotto", price: 349 }
+                ],
+                chinese: [
+                    { name: "Manchurian", price: 199 },
+                    { name: "Cheese Cigar Rolls", price: 179 },
+                    { name: "Chowmein", price: 219 },
+                    { name: "Fried Rice", price: 189 },
+                    { name: "Hakka Noodles", price: 249 },
+                    { name: "Soups", price: 149 }
+                ]
+            };
+        
+    
+            // Function to generate HTML for a menu item
+            function generateMenuItem(item) {
+                return `
+                    <div class="menu-item">
+                        <img src="${item.name}.jpg" alt="" width="300" height="300">
+                        <h3>${item.name}</h3>
+                        <p style="background-color: #ddd;">Price: ₹${item.price.toFixed(2)}</p>
+                        <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+                    </div>
+                `;
+            }
+    
+            // Display the menu items dynamically for each section
+            const sections = ['northIndian', 'southIndian', 'continental', 'italian', 'chinese'];
+            sections.forEach(section => {
+                const menuItemsContainer = document.getElementById(`${section}Menu`);
+                menuData[section].forEach(item => {
+                    const menuItemHTML = generateMenuItem(item);
+                    menuItemsContainer.innerHTML += menuItemHTML;
+                });
+            });
+    
+            // Cart data
+            const cart = [];
+
+            // Function to add an item to the cart
+            function addToCart(name, price) {
+                const itemIndex = cart.findIndex(item => item.name === name);
+                if (itemIndex !== -1) {
+                    // Item already in cart, increase quantity
+                    cart[itemIndex].quantity++;
+                } else {
+                    // Item not in cart, add it
+                    cart.push({ name, price, quantity: 1 });
+                }
+                updateCart();
+            }
+    
+            // Function to remove an item from the cart
+            function removeFromCart(name) {
+                const itemIndex = cart.findIndex(item => item.name === name);
+                if (itemIndex !== -1) {
+                    if (cart[itemIndex].quantity > 1) {
+                        // Decrease quantity if greater than 1
+                        cart[itemIndex].quantity--;
+                    } else {
+                        // Remove item from cart if quantity is 1
+                        cart.splice(itemIndex, 1);
+                    }
+                    updateCart();
+                }
+            }
+    
+            // Function to update the cart and total
+            function updateCart() {
+                const cartItemsContainer = document.getElementById("cart-items");
+                const cartTotal = document.getElementById("cart-total");
+                cartItemsContainer.innerHTML = "";
+                let total = 0;
+                cart.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = `${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toFixed(2)}`;
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "Remove";
+                    removeButton.addEventListener("click", () => {
+                        removeFromCart(item.name);
+                    });
+                    li.appendChild(removeButton);
+                    cartItemsContainer.appendChild(li);
+                    total += item.price * item.quantity;
+                });
+                cartTotal.textContent = total.toFixed(2);
+            }
+        </script>
+    </body>
+    </html>
+    
+
+    <script>
+        // Add your JavaScript code here
+        // You can use JavaScript to handle form submissions, add items to the cart, remove items, calculate the total, etc.
+
+        const cartItemsContainer = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+
+        // Conversion rate (1 USD to INR)
+        const conversionRate = 75.00; // Change this rate as needed
+
+        // Cart data
+        const cart = [];
+
+        // Add item to cart
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        // Remove item from cart
+        function removeFromCart(name) {
+            const index = cart.findIndex(item => item.name === name);
+            if (index !== -1) {
+                const item = cart[index];
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+            }
+            updateCart();
+        }
+
+        // Update cart and calculate total
+        function updateCart() {
+            cartItemsContainer.innerHTML = "";
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} x ${item.quantity} - ₹${(item.price * item.quantity * conversionRate).toFixed(2)}`;
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.addEventListener("click", () => {
+                    removeFromCart(item.name);
+                });
+                li.appendChild(removeButton);
+                cartItemsContainer.appendChild(li);
+                total += item.price * item.quantity * conversionRate;
+            });
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Event listeners for adding and removing items
+        const menuItems = document.querySelectorAll(".menu-item");
+        menuItems.forEach(menuItem => {
+            const addToCartButton = menuItem.querySelector(".add-to-cart");
+            const quantityButtons = menuItem.querySelectorAll(".quantity-btn");
+            const quantityDisplay = menuItem.querySelector(".quantity");
+
+            addToCartButton.addEventListener("click", () => {
+                const name = addToCartButton.getAttribute("data-name");
+                const price = parseFloat(addToCartButton.getAttribute("data-price"));
+                addToCart(name, price);
+            });
+
+            quantityButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const action = button.getAttribute("data-action");
+                    const menuItem = button.closest(".menu-item");
+                    const name = menuItem.querySelector(".add-to-cart").getAttribute("data-name");
+
+                    if (action === "add") {
+                        addToCart(name, 0); // The price doesn't change when increasing quantity
+                    } else if (action === "subtract") {
+                        removeFromCart(name);
+                    }
+                });
+            });
+        });
+        // Get the order form element
+// Get the order form element
+const orderForm = document.getElementById("orderForm");
+
+// Add an event listener for form submission
+orderForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
+    const formData = new FormData(orderForm);
+    const orderDetails = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        address: formData.get("address"),
+        instructions: formData.get("instructions"),
+    };
+
+    try {
+        // Send a POST request to the backend
+        const response = await fetch("http://localhost:3000/api/orders", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderDetails),
+        });
+
+        if (response.ok) {
+            // Order was successfully placed
+            const responseData = await response.json();
+            alert(responseData.message);
+            // You can optionally clear the form or update the UI here
+        } else {
+            // Handle errors here (e.g., server error)
+            alert("Error placing the order");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+        alert("An error occurred while placing the order");
+    }
+});
+
+
+
+    </script>
+    <section id="order">
+        <h2>Place Your Order</h2>
+        <form id="orderForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+    
+            <label for="address">Delivery Address:</label>
+            <textarea id="address" name="address" required></textarea>
+    
+            <label for="instructions">Additional Instructions:</label>
+            <textarea id="instructions" name="instructions"></textarea>
+    
+        </form>
+        <section id="confirmation" style="display: none;">
+            <h2>Order Confirmation</h2>
+            <p>Thank you for placing your order with Food Delivery System. An email confirmation has been sent to your email address.</p>
+            <!-- You can provide additional details or links here as needed. -->
+        </section>
+    </section>
+        <button type="submit" onclick="sendemail()">Place Order</button>
+   
+</body>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+    function sendemail(){
+        const cartTotal = document.getElementById("cart-total");
+        console.log(cartTotal)
+        const message="thanks for placing order. Your order will be delivered shortly.Your total is: " + cartTotal.innerText
+        console.log(message)
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "ak3944@srmist.edu.in",
+    Password : "C63636B1B31A5DEABB8A00F814FD2C04882B",
+    To : document.getElementById('email').value,
+    From : "ak3944@srmist.edu.in",
+    Subject: "order confirmation",
+    Body : message
+}).then(
+  message => alert(message)
+);
+    }
+</script>
+</html>
